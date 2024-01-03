@@ -16,5 +16,3 @@ User Guide
 
 .. toctree::
    :maxdepth: 2
-
-   template_instructions

@@ -10,4 +10,9 @@
 # # # for more details. If you did not receive the license, for more information see:
 # # # https://github.com/U-S-NRL-Marine-Meteorology-Division/
 
-"""Init file."""
+"""Fortran utilities to access GeoIPS ancillary datasets."""
+
+# NOTE: _version.py is generated automatically during build/install
+from ._version import __version__, __version_tuple__
+
+__all__ = ["__version__", "__version_tuple__"]
