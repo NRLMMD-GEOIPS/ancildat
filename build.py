@@ -1,3 +1,5 @@
+#!/bin/env python
+
 # # # Distribution Statement A. Approved for public release. Distribution unlimited.
 # # #
 # # # Author:
@@ -10,4 +12,17 @@
 # # # for more details. If you did not receive the license, for more information see:
 # # # https://github.com/U-S-NRL-Marine-Meteorology-Division/
 
-"""Init file."""
+"""Build dependencies."""
+
+from subprocess import run
+from os.path import dirname
+
+
+def run_make(setup_kwargs):
+    """Build dependencies."""
+    run(["make", "-C", dirname(__file__)])
+    return setup_kwargs
+
+
+if __name__ == "__main__":
+    run_make({})
