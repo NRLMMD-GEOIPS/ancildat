@@ -78,6 +78,7 @@ $(FORTRAN_UTILS_LIB)/string_operations.o:
 
 #####################################################
 ### Actual build commands for *.so (f2py) and *.o (gfortran) files
+
 $(LIB)/lib%.so: %.f90
 	mkdir -p $(INC) $(LIB)
 	f2py $(F2PCFLAGS) -m lib$* -c $?

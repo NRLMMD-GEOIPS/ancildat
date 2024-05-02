@@ -29,8 +29,19 @@ elevation, rayleigh scattering look up tables, climatology, etc.
 System Requirements
 ---------------------
 
-* geoips >= 1.12.0
+* geoips >= 1.12.1
+* fortran_utils >= 1.12.1 (currently must pip install FIRST)
 * Test data repos contained in $GEOIPS_TESTDATA_DIR for tests to pass.
+* GEOIPS_ANCILDAT and GEOIPS_ANCILDAT_AUTOGEN
+
+  * Must define GEOIPS_ANCILDAT and GEOIPS_ANCILDAT_AUTOGEN environment variables
+    prior to building ancildat
+  * These values are hard coded into a fortran config.f90 file at build time
+  * The default locations would be:
+  
+    * $GEOIPS_OUTDIRS/ancildat
+    * $GEOIPS_OUTDIRS/ancildat_autogen
+  * Alternative locations should be specified if using shared ancillary data
 
 IF REQUIRED: Install base geoips package
 ------------------------------------------------------------
@@ -49,13 +60,14 @@ Install ancildat package
     git clone https://github.com/NRLMMD-GEOIPS/fortran_utils $GEOIPS_PACKAGES_DIR/fortran_utils
     git clone https://github.com/NRLMMD-GEOIPS/ancildat $GEOIPS_PACKAGES_DIR/ancildat
 
-    # NOTE: currently, fortran_utils must be pip installed BEFORE pip installing
-    # ancildat.  Including fortran_utils as a dependency within ancildat pyproject.toml
-    # initially resulted in incorrect installation paths, so more work required to
-    # get the pip dependencies working properly for fortran installations via
-    # pyproject.toml with the poetry backend.
+    # NOTE: currently, fortran dependencies must be installed separately, initially
+    # including in pyproject.toml resulted in incorrect installation paths.
+    # More work required to get the pip dependencies working properly for fortran
+    # installations via pyproject.toml with the poetry backend.
     pip install -e $GEOIPS_PACKAGES_DIR/fortran_utils
     pip install -e $GEOIPS_PACKAGES_DIR/ancildat
+
+    # Set GEOIPS_ANCILDAT and GEOIPS_ANCILDAT_AUTOGEN
 ```
 
 Test ancildat installation
@@ -64,6 +76,6 @@ Test ancildat installation
 
     # Ensure GeoIPS Python environment is enabled.
 
-    # ancildat package is used for True Color, cirrus detection, cloud layer, and other products.
-    # Test those products to test ancildat functionality
+    # synth_green package is used for True Color and GeoColor
+    # Test those products to test synth_green functionality
 ```
