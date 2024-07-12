@@ -29,7 +29,7 @@ metadata = false # don't include local-version hash; date doesn't appear by deaf
 style = "pep440" # pep440 is deafult; can rmeove later on; used for : keeping 0.0.8 as the default install until 0.0.9 is out
 #style = "semver"
 #tag-branch = "feature-poetry"
-strict = true
+strict = false
 pattern = "(?x)^((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)([-._]?((?P<stage>[a-zA-Z]+)[-._]?(?P<revision>\\d+)?))?(\\+(?P<tagged_metadata>.+))?$"
 
 # NOTE: You must CREATE a _version.py file and commit it via git!
@@ -51,8 +51,8 @@ files = ["*/_version.py"]
 generate-setup-file = false  # I have no idea what this does
 script = "build.py"  # This gets called as a python script prior to running build steps
 
-# [tool.poetry.dependencies] # must download to run
-# fortran_utils = { git = "https://github.com/NRLMMD-GEOIPS/fortran_utils.git", develop = true, branch = "dev" }
+[tool.poetry.dependencies]
+# fortran_utils = { git = "https://github.com/NRLMMD-GEOIPS/fortran_utils.git", develop = true, branch = "main" }
 
 [build-system]
 requires = [
