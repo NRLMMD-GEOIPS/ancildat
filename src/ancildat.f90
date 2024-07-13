@@ -291,6 +291,7 @@ module ancildat
 
         ! INTERNAL
         integer :: stat
+        integer :: wait_seconds = 0
         character(512) :: storage_fname
         character(64) :: storage_pref
         type(Date_Time) :: dt
@@ -345,9 +346,10 @@ module ancildat
         ! Look for a lock file (indicates currently being written)
         open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
               iostat=stat)
-        do while (stat /= 0)
+        do while (stat /= 0 .and. wait_seconds < 30 )
             print *, 'File locked ', trim(storage_fname)//'.processing'
             call sleep(1)
+            wait_seconds = wait_seconds + 1
             open(lock_r, file=trim(storage_fname)//".processing", status='new', action='write', &
                   iostat=stat)
         enddo
@@ -563,6 +565,7 @@ module ancildat
 
         ! INTERNAL
         integer :: lines, samples, stat
+        integer :: wait_seconds = 0
         logical :: fexist
         character(len=64) :: storage_pref
         character(len=512) :: storage_fname
@@ -627,9 +630,10 @@ module ancildat
         ! Look for a lock file (indicates currently being written)
         open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
               iostat=stat)
-        do while (stat /= 0)
+        do while (stat /= 0 .and. wait_seconds < 30 )
             print *, 'File locked ', trim(storage_fname)//'.processing'
             call sleep(1)
+            wait_seconds = wait_seconds + 1
             open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
                   iostat=stat)
         enddo
@@ -827,6 +831,7 @@ module ancildat
 
         ! Internal
         integer :: stat
+        integer :: wait_seconds = 0
         logical :: fexist
         character(512) :: storage_fname
         character(2) :: storage_pref = 'ls'
@@ -870,10 +875,11 @@ module ancildat
         ! Look for a lock file (indicates currently being written)
         open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
               iostat=stat)
-        do while (stat /= 0)
+        do while (stat /= 0 .and. wait_seconds < 30 )
             print *, 'Cannot open file with code: ', stat
             print *, 'File locked ', trim(storage_fname)//'.processing'
             call sleep(1)
+            wait_seconds = wait_seconds + 1
             open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
                   iostat=stat)
         enddo
@@ -967,6 +973,7 @@ module ancildat
 
         ! Internal
         integer :: stat
+        integer :: wait_seconds = 0
         logical :: fexist
         character(512) :: storage_fname
         character(4) :: storage_pref = 'elev'
@@ -1008,9 +1015,10 @@ module ancildat
         ! Look for a lock file (indicates currently being written)
         open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
               iostat=stat)
-        do while (stat /= 0)
+        do while (stat /= 0 .and. wait_seconds < 30 )
             print *, 'File locked ', trim(storage_fname)//'.processing'
             call sleep(1)
+            wait_seconds = wait_seconds + 1
             open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
                   iostat=stat)
         enddo
@@ -1103,6 +1111,7 @@ module ancildat
 
         ! Internal
         integer :: stat
+        integer :: wait_seconds = 0
         logical :: fexist
         character(512) :: storage_fname
         character(2) :: storage_pref = 'cl'
@@ -1144,9 +1153,10 @@ module ancildat
         ! Look for a lock file (indicates currently being written)
         open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
               iostat=stat)
-        do while (stat /= 0)
+        do while (stat /= 0 .and. wait_seconds < 30 )
             print *, 'File locked ', trim(storage_fname)//'.processing'
             call sleep(1)
+            wait_seconds = wait_seconds + 1
             open(newunit(lock_r), file=trim(storage_fname)//".processing", status='new', action='write', &
                   iostat=stat)
         enddo
