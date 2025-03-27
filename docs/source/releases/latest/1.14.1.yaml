@@ -1,0 +1,9 @@
+Release process:
+  title: "Update all standard geoips_ci/sync files"
+  files:
+    modified:
+    - .github/
+    - .gitignore
+    - CHANGELOG.rst
+    - CODE_OF_CONDUCT.md
+    - others
