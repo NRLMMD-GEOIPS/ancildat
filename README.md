@@ -1,4 +1,4 @@
-    # # # This source code is protected under the license referenced at
+    # # # This source code is subject to the license referenced at
     # # # https://github.com/NRLMMD-GEOIPS.
 
 ancildat GeoIPS Plugin
@@ -29,7 +29,7 @@ System Requirements
     prior to building ancildat
   * These values are hard coded into a fortran config.f90 file at build time
   * The default locations would be:
-  
+
     * $GEOIPS_OUTDIRS/ancildat
     * $GEOIPS_OUTDIRS/ancildat_autogen
   * Alternative locations should be specified if using shared ancillary data

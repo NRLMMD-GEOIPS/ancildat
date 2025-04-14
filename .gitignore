@@ -1,12 +1,7 @@
 ####################################################
-# geoips package specific .gitignore options:
+# Fortran specific .gitignore options:
 
-# auto-downloaded test datasets
-tests/data/**
-# auto-generated command instructions file
-geoips/commandline/ancillary_info/cmd_instructions.json
-# auto-generated alias mapping file for the cli
-geoips/commandline/ancillary_info/alias_mapping.json
+*.mod
 
 ####################################################
 # GeoIPS Environment specific .gitignore options:
