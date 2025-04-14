@@ -1,5 +1,6 @@
 Release process:
-  title: "Update all standard geoips_ci/sync files"
+- title: "Update all standard geoips_ci/sync files"
+  description: "Update sync files"
   files:
     modified:
     - .github/
